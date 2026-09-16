@@ -12,24 +12,37 @@ var serviceProvider = new ServiceCollection()
     .AddLogging(builder => builder.AddConsole())
     .BuildServiceProvider();
 
-var options = new AzurePiiRuleOptions
+foreach (var endpoint in new[] { "http://localhost:5004", Environment.GetEnvironmentVariable("AZURE_AI_LANGUAGE_URL")! } )
 {
-    Endpoint = Environment.GetEnvironmentVariable("AZURE_AI_LANGUAGE_URL")!,
-    AzureKeyCredential = new AzureKeyCredential(Environment.GetEnvironmentVariable("AZURE_AI_LANGUAGE_KEY")!),
-    SupportedLanguage = "en",
-    Operation = PiiOperation.Redact
-};
+    var mainLogger = serviceProvider.GetRequiredService<ILogger<Program>>();
 
-var rule = new AzurePiiRule(options);
+    try
+    {
+        var options = new AzurePiiRuleOptions
+        {
+            Endpoint = endpoint,
+            AzureKeyCredential = new AzureKeyCredential(Environment.GetEnvironmentVariable("AZURE_AI_LANGUAGE_KEY")!),
+            SupportedLanguage = "en",
+            Operation = PiiOperation.Redact
+        };
 
-var policy = new GuardrailPolicyBuilder()
-    .AddRule(rule)
-    .Build();
+        var rule = new AzurePiiRule(options);
 
-var logger = serviceProvider.GetRequiredService<ILogger<GuardrailPipeline>>();
-var guardrailPipeline = new GuardrailPipeline(policy, logger);
+        var policy = new GuardrailPolicyBuilder()
+            .AddRule(rule)
+            .Build();
 
-var context = new GuardrailContext { Text = "My postcode is 1234AB and my name is John Doe.", Phase = GuardrailPhase.Input };
+        var logger = serviceProvider.GetRequiredService<ILogger<GuardrailPipeline>>();
+        var guardrailPipeline = new GuardrailPipeline(policy, logger);
 
-var result = await guardrailPipeline.RunAsync(context);
-Console.WriteLine($"Guardrail result: {JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true })}");
+        var context = new GuardrailContext { Text = "My postcode is 1234AB and my name is John Doe.", Phase = GuardrailPhase.Input };
+
+        var result = await guardrailPipeline.RunAsync(context);
+
+        mainLogger.LogWarning("{Endpoint} --> Guardrail result: {Result}", endpoint, JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true }));
+    }
+    catch (Exception ex)
+    {
+        mainLogger.LogError(ex, "{Endpoint} --> Error: {Message}", endpoint, ex.Message);
+    }
+}
