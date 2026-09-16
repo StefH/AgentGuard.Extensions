@@ -73,8 +73,9 @@ public sealed class PresidioRule : IGuardrailRule
                 return GuardrailResult.Passed();
             }
 
-            var entityValues = entities
-                .Select(entity => GetEntityValue(entity, text))
+            var entityTypes = entities
+                .Select(entity => entity.EntityType)
+                .Where(entityType => !string.IsNullOrWhiteSpace(entityType))
                 .ToArray();
 
             if (_options.Operation == PiiOperation.Block)
@@ -86,7 +87,7 @@ public sealed class PresidioRule : IGuardrailRule
                     Severity = GuardrailSeverity.High,
                     Metadata = new Dictionary<string, object>
                     {
-                        { "entityValues", entityValues },
+                        { "entityTypes", entityTypes },
                         { "entityCount", entities.Length }
                     }
                 };
@@ -105,7 +106,7 @@ public sealed class PresidioRule : IGuardrailRule
                 RuleName = Name,
                 Metadata = new Dictionary<string, object>
                 {
-                    { "entityValues", entityValues },
+                    { "entityTypes", entityTypes },
                     { "entityCount", entities.Length }
                 }
             };
@@ -161,13 +162,6 @@ public sealed class PresidioRule : IGuardrailRule
     private static string BuildRedacted(RecognizerResult entity)
     {
         return !string.IsNullOrWhiteSpace(entity.EntityType) ? $"<{entity.EntityType.ToUpperInvariant()}>" : "<PII>";
-    }
-
-    private static string GetEntityValue(RecognizerResult entity, string text)
-    {
-        return TryGetSpan(entity, text.Length, out var start, out var length)
-            ? text.Substring(start, length)
-            : string.Empty;
     }
 
     private static bool TryGetSpan(RecognizerResult entity, int textLength, out int start, out int length)
