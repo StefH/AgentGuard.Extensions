@@ -9,6 +9,7 @@
 		<!-- Microsoft Azure PII -->
 		<PackageVersion Include="Azure.AI.Language.Text" Version="1.0.0-beta.4" />
 		<PackageVersion Include="Microsoft.Extensions.AI" Version="10.0.8" />
+		<PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.12" />
 
 		<!-- Presidio -->
 		<PackageVersion Include="Presidio.SDK" Version="0.0.2" />

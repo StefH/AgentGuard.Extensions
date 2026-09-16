@@ -10,12 +10,13 @@ using Presidio;
 using Presidio.DependencyInjection;
 using Presidio.Options;
 
-var services = new ServiceCollection();
-services.AddPresidioSDK(new PresidioSDKOptions
-{
-    AnalyzerBaseAddress = new Uri("http://localhost:5002"),
-    AnonymizerBaseAddress = new Uri("http://localhost:5001")
-});
+var services = new ServiceCollection()
+    .AddLogging(builder => builder.AddConsole())
+    .AddPresidioSDK(new PresidioSDKOptions
+    {
+        AnalyzerBaseAddress = new Uri("http://localhost:5002"),
+        AnonymizerBaseAddress = new Uri("http://localhost:5001")
+    });
 
 var serviceProvider = services.BuildServiceProvider();
 
@@ -44,4 +45,4 @@ var guardrailPipeline = new GuardrailPipeline(policy, logger);
 var context = new GuardrailContext { Text = "My postcode is 1234AB and my name is John Doe.", Phase = GuardrailPhase.Input };
 
 var result = await guardrailPipeline.RunAsync(context);
-Console.WriteLine($"Guardrail result: {JsonSerializer.Serialize(result)}");
+Console.WriteLine($"Guardrail result: {JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true })}");

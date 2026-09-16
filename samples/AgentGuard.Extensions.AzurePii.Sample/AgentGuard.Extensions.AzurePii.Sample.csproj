@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
@@ -10,6 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AgentGuard.Extensions.Presidio\AgentGuard.Extensions.Presidio.csproj" />
+    <ProjectReference Include="..\..\src\AgentGuard.Extensions.AzurePii\AgentGuard.Extensions.AzurePii.csproj" />
   </ItemGroup>
 </Project>
