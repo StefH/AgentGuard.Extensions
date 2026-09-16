@@ -16,15 +16,12 @@ public sealed class AzurePiiRule : IGuardrailRule
 
     private readonly string? _supportedLanguage;
 
-    private readonly double _confidenceThreshold;
-
     public AzurePiiRule(AzurePiiRuleOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
 
         _options = options;
         _supportedLanguage = options.SupportedLanguage;
-        _confidenceThreshold = options.ConfidenceThreshold ?? 0.7;
 
         var textAnalysisClientOptions = new TextAnalysisClientOptions(options.ApiVersion)
         {
@@ -85,10 +82,14 @@ public sealed class AzurePiiRule : IGuardrailRule
                 {
                     ModelVersion = _options.ModelVersion,
                     LoggingOptOut = _options.LoggingOptOut,
-                    ConfidenceScoreThreshold = new ConfidenceScoreThreshold((float)_confidenceThreshold),
                     Domain = _options.Domain
                 }
             };
+
+            if (_options.ConfidenceThreshold != null)
+            {
+                analyzeTextInput.ActionContent.ConfidenceScoreThreshold = new ConfidenceScoreThreshold((float)_options.ConfidenceThreshold.Value);
+            }
 
             if (_options.PiiCategories is { } categories && categories.Count > 0)
             {
@@ -151,7 +152,7 @@ public sealed class AzurePiiRule : IGuardrailRule
                 }
 
                 // Actually not needed, since we already set ConfidenceScoreThreshold in the request, but just in case the service doesn't respect it, we filter again here.
-                if (entity.ConfidenceScore < _confidenceThreshold)
+                if (_options.ConfidenceThreshold != null && entity.ConfidenceScore < _options.ConfidenceThreshold.Value)
                 {
                     continue;
                 }
