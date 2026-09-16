@@ -7,12 +7,14 @@
 		<PackageVersion Include="AgentGuard" Version="0.12.0" />
 		
 		<!-- Microsoft Azure PII -->
-		<!--<PackageVersion Include="Azure.AI.TextAnalytics" Version="5.3.0" />-->
 		<PackageVersion Include="Azure.AI.Language.Text" Version="1.0.0-beta.4" />
 		<PackageVersion Include="Microsoft.Extensions.AI" Version="10.0.8" />
 
+		<!-- Presidio -->
+		<PackageVersion Include="Presidio.SDK" Version="0.0.2" />
+
 		<!-- Microsoft Extensions -->
-		<PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.8" />
+		<PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
 		<PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.8" />
 		<PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.8" />
 		<PackageVersion Include="Microsoft.Extensions.Options" Version="10.0.8" />

@@ -13,7 +13,7 @@ public static class AzurePiiGuardrailBuilderExtensions
     /// <c>&lt;ENTITY_TYPE&gt;</c> tag.
     /// </summary>
     /// <param name="builder">The policy builder.</param>
-    /// <param name="options">Optional configuration. When null, defaults are used.</param>
+    /// <param name="options">The configuration.</param>
     /// <returns>The builder for chaining.</returns>
     public static GuardrailPolicyBuilder RedactAzurePii(this GuardrailPolicyBuilder builder, AzurePiiRuleOptions options)
     {

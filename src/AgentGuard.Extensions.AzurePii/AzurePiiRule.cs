@@ -32,7 +32,7 @@ public sealed class AzurePiiRule : IGuardrailRule
             {
                 IsLoggingContentEnabled = false,
                 IsLoggingEnabled = false,
-                IsDistributedTracingEnabled = false,
+                IsDistributedTracingEnabled = false
             }
         };
 
@@ -177,7 +177,7 @@ public sealed class AzurePiiRule : IGuardrailRule
                 {
                     { "entityValues", document.Entities.Select(m => m.Text).ToArray() },
                     { "entityCount", document.Entities.Count }
-                },
+                }
             };
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
