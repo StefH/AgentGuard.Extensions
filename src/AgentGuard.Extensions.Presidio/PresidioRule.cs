@@ -30,12 +30,16 @@ public sealed class PresidioRule : IGuardrailRule
         _confidenceThreshold = options.ConfidenceThreshold ?? 0.7;
     }
 
+    /// <inheritdoc />
     public string Name => "presidio-pii-detection";
 
+    /// <inheritdoc />
     public GuardrailPhase Phase => _options.RedactOutput ? GuardrailPhase.Both : GuardrailPhase.Input;
 
+    /// <inheritdoc />
     public int Order => 21;
 
+    /// <inheritdoc />
     public async ValueTask<GuardrailResult> EvaluateAsync(GuardrailContext context, CancellationToken cancellationToken = default)
     {
         var text = context.Text;

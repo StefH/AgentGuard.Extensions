@@ -14,14 +14,10 @@ public sealed class AzurePiiRule : IGuardrailRule
 
     private readonly AzurePiiRuleOptions _options;
 
-    private readonly string? _supportedLanguage;
-
     public AzurePiiRule(AzurePiiRuleOptions options)
     {
         ArgumentNullException.ThrowIfNull(options);
-
         _options = options;
-        _supportedLanguage = options.SupportedLanguage;
 
         var textAnalysisClientOptions = new TextAnalysisClientOptions(options.ApiVersion)
         {
@@ -47,12 +43,16 @@ public sealed class AzurePiiRule : IGuardrailRule
         }
     }
 
+    /// <inheritdoc />
     public string Name => "azure-pii-detection";
 
+    /// <inheritdoc />
     public GuardrailPhase Phase => _options.RedactOutput ? GuardrailPhase.Both : GuardrailPhase.Input;
 
+    /// <inheritdoc />
     public int Order => 21;
 
+    /// <inheritdoc />
     public async ValueTask<GuardrailResult> EvaluateAsync(GuardrailContext context, CancellationToken cancellationToken = default)
     {
         var text = context.Text;
@@ -74,7 +74,7 @@ public sealed class AzurePiiRule : IGuardrailRule
                     {
                         new MultiLanguageInput("1", text)
                         {
-                            Language = _supportedLanguage
+                            Language = _options.SupportedLanguage
                         }
                     }
                 },
