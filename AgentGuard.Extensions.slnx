@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AgentGuard.Extensions.Abstractions/AgentGuard.Extensions.Abstractions.csproj" Id="71b58abc-9742-4578-a872-ce08a1202531" />
+    <Project Path="src/AgentGuard.Extensions.AzurePii/AgentGuard.Extensions.AzurePii.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/samples/" />
+</Solution>
