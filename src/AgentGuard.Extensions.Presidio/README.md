@@ -28,7 +28,7 @@ var anonymizer = serviceProvider.GetRequiredService<IPresidioAnonymizer>();
 var options = new PresidioRuleOptions
 {
     Analyzer = analyzer,
-    AnonymizerService = anonymizer,
+    Anonymizer = anonymizer,
     Language = "nl",
     Operation = PiiOperation.Replace,
     Replacement = "<REDACTED>",

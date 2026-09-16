@@ -28,7 +28,7 @@ public sealed class AzurePiiRuleOptions
     /// If <c>null</c>, the categories are returned which are default for the defined ApiVersion.
     /// Set to <c>[PiiCategory.All]</c> to return ALL categories supported by the defined ApiVersion.
     /// </summary>
-    public required IReadOnlyList<PiiCategory>? PiiCategories { get; init; }
+    public IReadOnlyList<PiiCategory>? PiiCategories { get; init; }
 
     /// <summary>
     /// The analysis language sent to Azure. Defaults to <c>en</c>.

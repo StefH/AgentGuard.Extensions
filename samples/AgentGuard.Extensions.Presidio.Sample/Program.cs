@@ -39,9 +39,9 @@ var policy = new GuardrailPolicyBuilder()
     .Build();
 
 var logger = serviceProvider.GetRequiredService<ILogger<GuardrailPipeline>>();
-var gaurdrailPipeline = new GuardrailPipeline(policy, logger);
+var guardrailPipeline = new GuardrailPipeline(policy, logger);
 
 var context = new GuardrailContext { Text = "My postcode is 1234AB and my name is John Doe.", Phase = GuardrailPhase.Input };
 
-var result = await gaurdrailPipeline.RunAsync(context);
+var result = await guardrailPipeline.RunAsync(context);
 Console.WriteLine($"Guardrail result: {JsonSerializer.Serialize(result)}");
