@@ -64,11 +64,6 @@ public sealed class AzurePiiRule : IGuardrailRule
             return GuardrailResult.Passed();
         }
 
-        if (string.Equals(text, "medewerker", StringComparison.OrdinalIgnoreCase))
-        {
-            return GuardrailResult.Passed();
-        }
-
         using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         timeoutCts.CancelAfter(_options.Timeout);
 
@@ -82,8 +77,8 @@ public sealed class AzurePiiRule : IGuardrailRule
                     {
                         new MultiLanguageInput("1", text)
                         {
-                            Language = _supportedLanguage,
-                        },
+                            Language = _supportedLanguage
+                        }
                     }
                 },
                 ActionContent = new PiiActionContent
