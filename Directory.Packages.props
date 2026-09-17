@@ -5,11 +5,9 @@
 
 	<ItemGroup>
 		<PackageVersion Include="AgentGuard" Version="0.12.0" />
-		
+
 		<!-- Microsoft Azure PII -->
 		<PackageVersion Include="Azure.AI.Language.Text" Version="1.0.0-beta.4" />
-		<PackageVersion Include="Microsoft.Extensions.AI" Version="10.0.12" />
-		<PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.12" />
 
 		<!-- Presidio -->
 		<PackageVersion Include="Presidio.SDK" Version="0.0.2" />
@@ -18,9 +16,10 @@
 		<PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
 		<PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
 		<PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.12" />
+		<PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="10.0.12" />
+		<PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
 		<PackageVersion Include="Microsoft.Extensions.Options" Version="10.0.12" />
 		<PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.12" />
-		<PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.0.12" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.12" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="10.0.12" />
@@ -28,7 +27,7 @@
 
 		<!-- Source Link -->
 		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.401" />
-		
+
 		<!-- Testing -->
 		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
 		<PackageVersion Include="xunit" Version="2.9.3" />

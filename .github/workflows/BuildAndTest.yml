@@ -1,0 +1,31 @@
+name: Build and Test
+
+on: 
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  build-and-test:
+    name: Build and Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2022, ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # - name: 'Setup .NET SDK 9'
+    #   uses: actions/setup-dotnet@v4
+    #   with:
+    #     dotnet-version: '9.0.x'
+
+    - name: 'Build Solution'
+      run: dotnet build AgentGuard.Extensions.slnx -c Release
+
+    # - name: 'Test'
+    #   run: dotnet test './test/RamlToOpenApiConverterTest/RamlToOpenApiConverterTest.csproj' -c Release
