@@ -149,6 +149,10 @@ public sealed class PresidioRule : IGuardrailRule
                 CharsToMask = int.MaxValue,
                 FromEnd = false
             },
+            PiiOperation.Remove => new Replace
+            {
+                NewValue = string.Empty,
+            },
             PiiOperation.Replace => new Replace
             {
                 NewValue = !string.IsNullOrWhiteSpace(_options.Replacement) ? _options.Replacement : "<PII>"
