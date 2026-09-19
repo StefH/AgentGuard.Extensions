@@ -134,7 +134,7 @@ public sealed class AzurePiiRule : IGuardrailRule
                     Severity = GuardrailSeverity.High,
                     Metadata = new Dictionary<string, object>
                     {
-                        { "entityValues", document.Entities.Select(m => m.Text).ToArray() },
+                        { "entityTypes", document.Entities.Select(BuildRedacted).ToArray() },
                         { "entityCount", document.Entities.Count }
                     }
                 };
