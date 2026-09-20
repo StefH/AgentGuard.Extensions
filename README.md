@@ -6,8 +6,8 @@ Some extensions for [AgentGuard](https://github.com/filipw/AgentGuard).
 
 | Project | Info | NuGet
 | :- | :- | :- 
-| AgentGuard.Extensions.**AzurePii** | [Readme](https://github.com/StefH/AgentGuard.Extensions/blob/src/AgentGuard.Extensions.AzurePii/README.md) | [![AgentGuard.Extensions.AzurePii](https://img.shields.io/nuget/v/AgentGuard.Extensions.AzurePii)](https://www.nuget.org/packages/AgentGuard.Extensions.AzurePii)
-| AgentGuard.Extensions.**Presidio** | [Readme](https://github.com/StefH/AgentGuard.Extensions/blob/src/AgentGuard.Extensions.Presidio/README.md) | [![AgentGuard.Extensions.Presidio](https://img.shields.io/nuget/v/AgentGuard.Extensions.Presidio)](https://www.nuget.org/packages/AgentGuard.Extensions.Presidio)
+| AgentGuard.Extensions.**AzurePii** | [Info](https://github.com/StefH/AgentGuard.Extensions/blob/src/AgentGuard.Extensions.AzurePii) | [![AgentGuard.Extensions.AzurePii](https://img.shields.io/nuget/v/AgentGuard.Extensions.AzurePii)](https://www.nuget.org/packages/AgentGuard.Extensions.AzurePii)
+| AgentGuard.Extensions.**Presidio** | [Info](https://github.com/StefH/AgentGuard.Extensions/blob/src/AgentGuard.Extensions.Presidio) | [![AgentGuard.Extensions.Presidio](https://img.shields.io/nuget/v/AgentGuard.Extensions.Presidio)](https://www.nuget.org/packages/AgentGuard.Extensions.Presidio)
 
 ---
 
