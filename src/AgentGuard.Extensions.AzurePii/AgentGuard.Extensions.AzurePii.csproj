@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Description>AgentGuard guardrail adapter for Azure PII detection/de-identification.</Description>
+		<PackageId>AgentGuard.Extensions.AzurePii</PackageId>
+		<RootNamespace>AgentGuard.Extensions.AzurePii</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(IsPackable)' != 'false'">
+		<None Include="README.md" Pack="true" PackagePath="/" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AgentGuard" />
+		<PackageReference Include="Azure.AI.Language.Text" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\AgentGuard.Extensions.Abstractions\AgentGuard.Extensions.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

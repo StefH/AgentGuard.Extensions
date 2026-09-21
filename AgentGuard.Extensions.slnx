@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AgentGuard.Extensions.Abstractions/AgentGuard.Extensions.Abstractions.csproj" Id="71b58abc-9742-4578-a872-ce08a1202531" />
+    <Project Path="src/AgentGuard.Extensions.AzurePii/AgentGuard.Extensions.AzurePii.csproj" />
+    <Project Path="src/AgentGuard.Extensions.Presidio/AgentGuard.Extensions.Presidio.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/samples/">
+    <Project Path="samples/AgentGuard.Extensions.AzurePii.Sample/AgentGuard.Extensions.AzurePii.Sample.csproj" />
+    <Project Path="samples/AgentGuard.Extensions.Presidio.Sample/AgentGuard.Extensions.Presidio.Sample.csproj" />
+  </Folder>
+</Solution>

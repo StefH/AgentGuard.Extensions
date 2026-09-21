@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>AgentGuard guardrail adapter for Presidio PII detection/de-identification.</Description>
+    <PackageId>AgentGuard.Extensions.Presidio</PackageId>
+    <RootNamespace>AgentGuard.Extensions.Presidio</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsPackable)' != 'false'">
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AgentGuard" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Presidio.SDK" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgentGuard.Extensions.Abstractions\AgentGuard.Extensions.Abstractions.csproj" />
+  </ItemGroup>
+</Project>
