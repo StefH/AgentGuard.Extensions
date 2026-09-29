@@ -2,9 +2,11 @@
 	<PropertyGroup>
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<PackageVersion Include="AgentGuard" Version="0.12.0" />
+
+		<!--  TypeSafe-AI -->
+		<PackageVersion Include="TypeSafe-AI.Sdk" Version="0.0.1-preview-05" />
 
 		<!-- Microsoft Azure PII -->
 		<PackageVersion Include="Azure.AI.Language.Text" Version="1.0.0-beta.4" />
@@ -30,6 +32,7 @@
 
 		<!-- Testing -->
 		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+
 		<PackageVersion Include="xunit" Version="2.9.3" />
 		<PackageVersion Include="xunit.runner.visualstudio" Version="2.8.2" />
 		<PackageVersion Include="Moq" Version="4.20.72" />
