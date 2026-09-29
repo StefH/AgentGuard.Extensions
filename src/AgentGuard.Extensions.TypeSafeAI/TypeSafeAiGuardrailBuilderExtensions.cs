@@ -1,4 +1,5 @@
 using AgentGuard.Core.Builders;
+using TypeSafeAI.Sdk.Api;
 
 namespace AgentGuard.Extensions.AzurePii;
 
@@ -13,8 +14,11 @@ public static class TypeSafeAiGuardrailBuilderExtensions
     /// <param name="builder">The policy builder.</param>
     /// <param name="options">The configuration.</param>
     /// <returns>The builder for chaining.</returns>
-    public static GuardrailPolicyBuilder RedactAzurePii(this GuardrailPolicyBuilder builder, AzurePiiRuleOptions options)
+    public static GuardrailPolicyBuilder BlockPromptInjectionWithTypeSafeAi(
+        this GuardrailPolicyBuilder builder, 
+        ITypeSafeClient client, 
+        TypeSafeAiRuleOptions options)
     {
-        return builder.AddRule(new AzurePiiRule(options));
+        return builder.AddRule(new TypeSafeAiRule(client, options));
     }
 }

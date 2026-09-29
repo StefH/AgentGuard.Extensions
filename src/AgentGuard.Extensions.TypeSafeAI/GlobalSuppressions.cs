@@ -5,4 +5,4 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Performance", "CA1826:Do not use Enumerable methods on indexable collections", Justification = "<Pending>", Scope = "member", Target = "~M:AgentGuard.Extensions.AzurePii.AzurePiiRule.EvaluateAsync(AgentGuard.Core.Abstractions.GuardrailContext,System.Threading.CancellationToken)~System.Threading.Tasks.ValueTask{AgentGuard.Core.Abstractions.GuardrailResult}")]
+[assembly: SuppressMessage("Performance", "CA1826:Do not use Enumerable methods on indexable collections", Justification = "<Pending>", Scope = "member", Target = "~M:AgentGuard.Extensions.AzurePii.TypeSafeAiRule.EvaluateAsync(AgentGuard.Core.Abstractions.GuardrailContext,System.Threading.CancellationToken)~System.Threading.Tasks.ValueTask{AgentGuard.Core.Abstractions.GuardrailResult}")]
