@@ -4,7 +4,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageVersion Include="AgentGuard" Version="0.12.0" />
+		<PackageVersion Include="AgentGuard" Version="0.14.0" />
 
 		<!-- Microsoft Azure PII -->
 		<PackageVersion Include="Azure.AI.Language.Text" Version="1.0.0-beta.4" />

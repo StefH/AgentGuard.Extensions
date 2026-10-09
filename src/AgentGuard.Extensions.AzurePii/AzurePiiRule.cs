@@ -157,8 +157,7 @@ public sealed class AzurePiiRule : IGuardrailRule
                     continue;
                 }
 
-                var label = $"{Name}-{BuildRedacted(entity)}";
-                labels.Add(label);
+                labels.Add(BuildRedacted(entity));
 
                 if (!_options.PassthroughRedactedText)
                 {
