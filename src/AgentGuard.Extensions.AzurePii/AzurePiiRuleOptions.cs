@@ -76,7 +76,7 @@ public sealed class AzurePiiRuleOptions
 
     /// <summary>
     /// When <c>true</c> (default), a remote failure (exception, non-success response, or timeout) is
-    /// swallowed and the recognizer returns no results for this request, so local-only recognizers
+    /// swallowed and the recognizer returns Passed for this request, so local-only recognizers
     /// still redact structured PII. When <c>false</c>, the failure propagates instead. Cancellation of
     /// the caller's own token always propagates regardless of this setting.
     /// </summary>

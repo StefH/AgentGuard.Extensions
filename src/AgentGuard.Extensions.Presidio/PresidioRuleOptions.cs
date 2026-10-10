@@ -39,8 +39,10 @@ public sealed class PresidioRuleOptions
     public double? ConfidenceThreshold { get; init; } = 0.7;
 
     /// <summary>
-    /// When <c>true</c> (default), a remote failure is swallowed and the rule returns no results.
-    /// When <c>false</c>, the failure propagates instead. Cancellation of the caller's token always propagates.
+    /// When <c>true</c> (default), a remote failure (exception, non-success response, or timeout) is
+    /// swallowed and the recognizer returns Passed for this request, so local-only recognizers
+    /// still redact structured PII. When <c>false</c>, the failure propagates instead. Cancellation of
+    /// the caller's own token always propagates regardless of this setting.
     /// </summary>
     public bool FailOpen { get; init; } = true;
 
