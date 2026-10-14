@@ -5,14 +5,15 @@ using AgentGuard.Core.Guardrails;
 using AgentGuard.Extensions.Abstractions;
 using AgentGuard.Extensions.AzurePii;
 using Azure;
-using Microsoft.Extensions.Logging;
+using Azure.AI.Language.Text;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 var serviceProvider = new ServiceCollection()
     .AddLogging(builder => builder.AddConsole())
     .BuildServiceProvider();
 
-foreach (var endpoint in new[] { "http://localhost:5004", Environment.GetEnvironmentVariable("AZURE_AI_LANGUAGE_URL")! } )
+foreach (var endpoint in new[] { Environment.GetEnvironmentVariable("AZURE_AI_LANGUAGE_URL")!, "http://localhost:5004" } )
 {
     var mainLogger = serviceProvider.GetRequiredService<ILogger<Program>>();
 
@@ -23,7 +24,9 @@ foreach (var endpoint in new[] { "http://localhost:5004", Environment.GetEnviron
             Endpoint = endpoint,
             AzureKeyCredential = new AzureKeyCredential(Environment.GetEnvironmentVariable("AZURE_AI_LANGUAGE_KEY")!),
             SupportedLanguage = "en",
-            Operation = PiiOperation.Redact
+            Operation = PiiOperation.Redact,
+            ExcludePiiCategories = [PiiCategoriesExclude.Airport],
+            ValueExclusionPolicy = new ValueExclusionPolicy(false, [ "vto", "aaa" ])
         };
 
         var rule = new AzurePiiRule(options);
@@ -35,7 +38,7 @@ foreach (var endpoint in new[] { "http://localhost:5004", Environment.GetEnviron
         var logger = serviceProvider.GetRequiredService<ILogger<GuardrailPipeline>>();
         var guardrailPipeline = new GuardrailPipeline(policy, logger);
 
-        var context = new GuardrailContext { Text = "My postcode is 1234AB and my name is John Doe.", Phase = GuardrailPhase.Input };
+        var context = new GuardrailContext { Text = "My postcode is 1234AB and my name is John Doe. And abc and vto.", Phase = GuardrailPhase.Input };
 
         var result = await guardrailPipeline.RunAsync(context);
 

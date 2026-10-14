@@ -31,6 +31,16 @@ public sealed class AzurePiiRuleOptions
     public IReadOnlyList<PiiCategory>? PiiCategories { get; init; }
 
     /// <summary>
+    /// List of PII categories to be excluded in the response.
+    /// </summary>
+    public IReadOnlyList<PiiCategoriesExclude>? ExcludePiiCategories { get; init; }
+
+    /// <summary>
+    /// Policy for specific words and terms that should be excluded from detection by the PII detection service.
+    /// </summary>
+    public ValueExclusionPolicy? ValueExclusionPolicy { get; init; }
+
+    /// <summary>
     /// The analysis language sent to Azure. Defaults to <c>en</c>.
     /// </summary>
     public string SupportedLanguage { get; init; } = "en";
