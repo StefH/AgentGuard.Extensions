@@ -31,6 +31,16 @@ public sealed class AzurePiiRuleOptions
     public IReadOnlyList<PiiCategory>? PiiCategories { get; init; }
 
     /// <summary>
+    /// List of PII categories to be excluded in the response.
+    /// </summary>
+    public IReadOnlyList<PiiCategoriesExclude>? ExcludePiiCategories { get; init; }
+
+    /// <summary>
+    /// Policy for specific words and terms that should be excluded from detection by the PII detection service.
+    /// </summary>
+    public ValueExclusionPolicy? ValueExclusionPolicy { get; init; }
+
+    /// <summary>
     /// The analysis language sent to Azure. Defaults to <c>en</c>.
     /// </summary>
     public string SupportedLanguage { get; init; } = "en";
@@ -76,7 +86,7 @@ public sealed class AzurePiiRuleOptions
 
     /// <summary>
     /// When <c>true</c> (default), a remote failure (exception, non-success response, or timeout) is
-    /// swallowed and the recognizer returns no results for this request, so local-only recognizers
+    /// swallowed and the recognizer returns Passed for this request, so local-only recognizers
     /// still redact structured PII. When <c>false</c>, the failure propagates instead. Cancellation of
     /// the caller's own token always propagates regardless of this setting.
     /// </summary>

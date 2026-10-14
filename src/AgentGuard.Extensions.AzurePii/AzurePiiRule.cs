@@ -99,6 +99,19 @@ public sealed class AzurePiiRule : IGuardrailRule
                 }
             }
 
+            if (_options.ExcludePiiCategories is { } excludeCategories && excludeCategories.Count > 0)
+            {
+                foreach (var excludeCategory in excludeCategories)
+                {
+                    analyzeTextInput.ActionContent.ExcludePiiCategories.Add(excludeCategory);
+                }
+            }
+
+            if (_options.ValueExclusionPolicy is { } valueExclusionPolicy)
+            {
+                analyzeTextInput.ActionContent.ValueExclusionPolicy = valueExclusionPolicy;
+            }
+
             var response = await _client
                 .AnalyzeTextAsync(analyzeTextInput, showStatistics: false, cancellationToken: timeoutCts.Token)
                 .ConfigureAwait(false);
@@ -157,8 +170,7 @@ public sealed class AzurePiiRule : IGuardrailRule
                     continue;
                 }
 
-                var label = $"{Name}-{BuildRedacted(entity)}";
-                labels.Add(label);
+                labels.Add(BuildRedacted(entity));
 
                 if (!_options.PassthroughRedactedText)
                 {
