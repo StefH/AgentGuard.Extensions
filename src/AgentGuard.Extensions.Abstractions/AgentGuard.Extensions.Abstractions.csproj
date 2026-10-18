@@ -3,6 +3,7 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<PackageId>AgentGuard.Extensions.Abstractions</PackageId>
 		<RootNamespace>AgentGuard.Extensions.Abstractions</RootNamespace>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../PackageReleaseNotes.txt"))</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(IsPackable)' != 'false'">
