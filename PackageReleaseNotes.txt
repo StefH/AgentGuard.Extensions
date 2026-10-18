@@ -1,3 +1,4 @@
-#  ()
+# 0.0.2 (18 October 2026)
+- #2 Upgrade AgentGuard to 0.14.0 [enhancement]
 
 The full release notes can be found here: https://github.com/StefH/AgentGuard.Extensions/blob/main/ReleaseNotes.md

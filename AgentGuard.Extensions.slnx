@@ -3,8 +3,12 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Build.targets" />
     <File Path="Directory.Packages.props" />
-    <File Path="Generate-ReleaseNotes.bat" />
     <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/release-notes/">
+    <File Path="Generate-ReleaseNotes.bat" />
+    <File Path="PackageReleaseNotes.template" />
+    <File Path="PackageReleaseNotes.txt" />
     <File Path="ReleaseNotes.md" />
   </Folder>
   <Folder Name="/src/">
