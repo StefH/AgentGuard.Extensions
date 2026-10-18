@@ -3,6 +3,7 @@
     <Description>AgentGuard guardrail adapter for Presidio PII detection/de-identification.</Description>
     <PackageId>AgentGuard.Extensions.Presidio</PackageId>
     <RootNamespace>AgentGuard.Extensions.Presidio</RootNamespace>
+    <PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../PackageReleaseNotes.txt"))</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IsPackable)' != 'false'">

@@ -3,6 +3,7 @@
 		<Description>AgentGuard guardrail adapter for Azure PII detection/de-identification.</Description>
 		<PackageId>AgentGuard.Extensions.AzurePii</PackageId>
 		<RootNamespace>AgentGuard.Extensions.AzurePii</RootNamespace>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/../../PackageReleaseNotes.txt"))</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(IsPackable)' != 'false'">

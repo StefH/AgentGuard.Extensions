@@ -100,7 +100,7 @@ public sealed class PresidioRule : IGuardrailRule
             var labels = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             foreach (var entity in entities)
             {
-                labels.Add($"{Name}-{BuildRedacted(entity)}");
+                labels.Add(BuildRedacted(entity));
             }
 
             var modifiedText = await AnonymizeTextAsync(text, entities, timeoutCts.Token).ConfigureAwait(false);
